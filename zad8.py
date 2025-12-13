@@ -1,6 +1,8 @@
 from typing import List
 import json
 import requests
+import argparse
+import sys
 
 class Brewery:
     def __init__(self, id, name, brewery_type, address_1, address_2, address_3, city, state_province, postal_code, country, phone, website_url, longitude, latitude, state, street):
@@ -41,9 +43,12 @@ class Brewery:
                 f'')
 
 
-def get_breweries_from_api() -> list:
+def get_breweries_from_api(city) -> list:
     BASE_URL = 'https://api.openbrewerydb.org/v1/breweries'
-    response = requests.get(f"{BASE_URL}?per_page=20")
+    if city == '':
+        response = requests.get(f"{BASE_URL}?per_page=20")
+    else:
+        response = requests.get(f"{BASE_URL}?by_city={city}")
     return response
 
 
@@ -51,10 +56,18 @@ def brewery_factory(breweries) -> List[Brewery]:
     data = json.loads(breweries.text)
     return [Brewery(**item) for item in data]
 
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Brewery API')
+    parser.add_argument('city', type=str, help='city name')
+    return vars(parser.parse_args())
+
 
 
 def main():
-    breweries = get_breweries_from_api()
+
+    args = parse_arguments()
+    #city = input('City: ')
+    breweries = get_breweries_from_api(args['city'])
     breweries = brewery_factory(breweries)
 
     for brewery in breweries:
