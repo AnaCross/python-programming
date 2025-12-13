@@ -2,6 +2,7 @@ from typing import List
 import json
 import requests
 
+
 class Brewery:
     def __init__(self, id, name, brewery_type, address_1, address_2, address_3, city, state_province, postal_code, country, phone, website_url, longitude, latitude, state, street):
         self.id = id
@@ -52,7 +53,6 @@ def brewery_factory(breweries) -> List[Brewery]:
     return [Brewery(**item) for item in data]
 
 
-
 def main():
     breweries = get_breweries_from_api()
     breweries = brewery_factory(breweries)
@@ -62,5 +62,3 @@ def main():
 
 
 main()
-
-

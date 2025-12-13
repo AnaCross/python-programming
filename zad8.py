@@ -4,6 +4,7 @@ import requests
 import argparse
 import sys
 
+
 class Brewery:
     def __init__(self, id, name, brewery_type, address_1, address_2, address_3, city, state_province, postal_code, country, phone, website_url, longitude, latitude, state, street):
         self.id = id
@@ -56,17 +57,16 @@ def brewery_factory(breweries) -> List[Brewery]:
     data = json.loads(breweries.text)
     return [Brewery(**item) for item in data]
 
+
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Brewery API')
     parser.add_argument('city', type=str, help='city name')
     return vars(parser.parse_args())
 
 
-
 def main():
 
     args = parse_arguments()
-    #city = input('City: ')
     breweries = get_breweries_from_api(args['city'])
     breweries = brewery_factory(breweries)
 
@@ -75,5 +75,3 @@ def main():
 
 
 main()
-
-

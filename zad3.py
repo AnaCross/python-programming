@@ -8,6 +8,7 @@ class Property:
     def __str__(self):
         return f'{self.area} {self.rooms} {self.price} {self.address}'
 
+
 class House(Property):
     def __init__(self, area, rooms, price, address, plot):
         super().__init__(area, rooms, price, address)
@@ -16,6 +17,7 @@ class House(Property):
     def __str__(self):
         return f'{self.area} {self.rooms} {self.price} {self.address} {self.plot}'
 
+
 class Flat(Property):
     def __init__(self, area, rooms, price, address, floor):
         super().__init__(area, rooms, price, address)
@@ -23,6 +25,7 @@ class Flat(Property):
 
     def __str__(self):
         return f'{self.area} {self.rooms} {self.price} {self.address} {self.floor}'
+
 
 house = House(100, 2, 400000000, 'ala ma kota 3', 50)
 print(house.__str__())

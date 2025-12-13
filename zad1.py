@@ -7,10 +7,11 @@ class Student:
         sum = 0
         for mark in self.marks:
             sum += mark
-        if sum/len(self.marks) > 50:
+        if sum / len(self.marks) > 50:
             return True
         else:
             return False
+
 
 student1 = Student("John", [89, 78, 45, 67])
 print(student1.is_passed())
