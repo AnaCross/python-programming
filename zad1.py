@@ -1,16 +1,4 @@
-class Student:
-    def __init__(self, name, marks):
-        self.name = name
-        self.marks = marks
-
-    def is_passed(self):
-        sum = 0
-        for mark in self.marks:
-            sum += mark
-        if sum / len(self.marks) > 50:
-            return True
-        else:
-            return False
+import People.Student as Student
 
 
 student1 = Student("John", [89, 78, 45, 67])
