@@ -1,4 +1,4 @@
-def concat_vals(name : str, surname : str):
+def concat_vals(name: str, surname: str):
     return f"Hello {name} {surname}"
 
 

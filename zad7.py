@@ -2,6 +2,7 @@ import json
 
 import requests
 
+
 class Brewery:
     def __init__(self, id, name, brewery_type, address_1, address_2, address_3, city, state_province, postal_code, country, phone, website_url, longitude, latitude, state, street):
         self.id = id
@@ -40,18 +41,16 @@ class Brewery:
                 f'\nStreet: {self.street}'
                 f'')
 
+
 def cast_json_to_object(json_data):
     data = json.loads(json_data.text)
     return [Brewery(**item) for item in data]
 
+
 BASE_URL = 'https://api.openbrewerydb.org/v1/breweries'
 
-#response = requests.get(f"{BASE_URL}/random")
 response = requests.get(f"{BASE_URL}?per_page=20")
-#print(response.json())
 
 breweries = cast_json_to_object(response)
 for brewery in breweries:
     print(brewery.__str__())
-
-

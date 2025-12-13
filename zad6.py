@@ -1,4 +1,3 @@
-
 def check_list_int(numbers: list) -> bool:
     for number in numbers:
         if isinstance(number, int):
@@ -6,6 +5,7 @@ def check_list_int(numbers: list) -> bool:
         else:
             return False
     return True
+
 
 def magic_on_lists(number1: list, number2: list) -> list:
     check_list_int(number1)
@@ -19,6 +19,5 @@ def magic_on_lists(number1: list, number2: list) -> list:
     number3 = [number ** 3 for number in number3]
     return number3
 
+
 print(magic_on_lists([1, 2, 3], [2, 3]))
-
-
